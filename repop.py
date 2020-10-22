@@ -11,5 +11,6 @@ def main():
     # This file should be used for some quick populating of the DB with dummy data.
     # currently, it does nothing.
 
+
 if __name__ == "__main__":
     main()

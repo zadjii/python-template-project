@@ -6,6 +6,7 @@ from common.Instance import Instance
 from models.Issue import Issue
 from models.Comment import Comment
 
+
 def main(argv):
 
     instance = Instance()

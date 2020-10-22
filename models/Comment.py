@@ -18,7 +18,6 @@ class Comment(base):
     api_id = Column(Integer)
     issue_number = Column(Integer, ForeignKey("issue.number"))
 
-
     issue = relationship(
         "Issue",
         foreign_keys=[issue_number],

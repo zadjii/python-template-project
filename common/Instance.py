@@ -10,7 +10,8 @@ from common.ResultAndData import *
 from models import db_base
 import time
 
-APP_NAME = 'my-app'
+APP_NAME = "my-app"
+
 
 def get_from_conf(config, key, default):
     return config.get("root", key) if config.has_option("root", key) else default
