@@ -10,7 +10,15 @@ from common.ResultAndData import *
 from models import db_base
 import time
 
+# Change this as needed.
 APP_NAME = "my-app"
+
+"""
+The configuration file should go in the .localdata folder, and look something like
+
+[root]
+API_TOKEN=<whatever>
+"""
 
 
 def get_from_conf(config, key, default):
@@ -20,7 +28,8 @@ def get_from_conf(config, key, default):
 class Instance(object):
     def __init__(self):
         """
-        Creates a Instance which can track database and authentication state
+        Creates a Instance which can track database and authentication state.
+        Use this class to store all runtime application state.
         """
 
         # This section is all needed by Instance itself
@@ -39,7 +48,7 @@ class Instance(object):
         # as instance.session as an example (ms-cli does this with the graph
         # session.)
         self.session = None
-        self._current_user_guid = None
+        self.api_token = None
         ########################################################################
         # Finally, call init_dir, which will create or load the database, and
         # load the config file.
@@ -98,6 +107,9 @@ class Instance(object):
     def _db_path(self):
         return os.path.join(self._working_dir, self._db_name)
 
+    def get_config_file_path(self):
+        return os.path.join(self._working_dir, self._conf_file_name)
+
     def migrate(self):
         repo = self._db_migrate_repo()
         uri = self._db_uri()
@@ -125,10 +137,7 @@ class Instance(object):
         # self._current_user_name = get_from_conf(
         #     config, "user_name", self._current_user_name
         # )
-        # self.api_toked = get_from_conf(
-        #     config, "API_TOKEN", self.api_token
-        # )
-        pass
+        self.api_token = get_from_conf(config, "API_TOKEN", self.api_token)
 
     def load_conf(self):
         conf_file = self.get_config_file_path()

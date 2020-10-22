@@ -11,6 +11,10 @@ write python projects.
 * It has some helpers that I really like in `common/`, especially
   `ResultAndData` for returning bot a suceeded/failed boolean and some sort of
   return value.
+* It's also got a sample in `argparse-main.py` for setting up a `main` that uses
+  subcommands to run the program, so you can quickly build a git-like
+  commandline experience.
+
 
 ## Contributing
 

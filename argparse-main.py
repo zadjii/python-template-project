@@ -20,6 +20,7 @@ class SampleCommand(BaseCommand):
     def do_command_with_args(self, instance, args):
         # type: (Instance, Namespace) -> ResultAndData
         print("You've run the sample command!")
+        print(f"{instance.api_token}")
         return Success()
 
 
